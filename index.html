@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather app</title>
 </head>
 <body>
@@ -10,12 +11,36 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main>
-        <h1>Search for a City:</h1>
-        <form  method="search">
-            <input type="text" id="citySearch" placeholder="Atlanta" required>
-            <button type="submit">Submit</button>
-        </form>
-
+        <!-- TODO: search/search history section -->
+        <div class="container">
+            <div class="left-container">
+                <div class="search-container">
+                    <h2>Search for a City:</h2>
+                    <form id="weatherForm">
+                        <input type="text" id="cityInput" name="city" placeholder="City" required>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <div id="searchHistory"></div>
+            </div>
+  <!-- TODO: todays weather seaction -->
+            <div class="right-container">
+                <div class="today-weather">
+                    <h2 id="cityAndDate"></h2>
+                    <div id="weatherInfo"></div>
+                </div>
+  <!-- TODO: 5 day forecast -->
+                <div class="forecast">
+                    <h2>5 Day Forecast:</h2>
+                    <div id="forecast"></div>
+                </div>
+            </div>
+        </div>
+          
     </main>
+    <!-- Added link to the jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/script.js" ></script>
 </body>
 </html>
