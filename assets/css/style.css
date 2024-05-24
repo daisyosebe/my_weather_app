@@ -55,6 +55,16 @@ body {
     border-radius: 3px;
     
 }
+#searchHistory {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#searchHistory button {
+    display: block;
+    margin-bottom: 5px;
+}
 .right-container {
     flex: 2;
 }
@@ -66,4 +76,10 @@ body {
 }
 h2{
     font-weight: bold;
+}
+.forecast-item {
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    box-sizing: border-box;
 }

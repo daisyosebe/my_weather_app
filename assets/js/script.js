@@ -30,6 +30,10 @@ document.getElementById("weatherForm").addEventListener("submit", function(event
                     <p>Humidity: ${humidity} %</p>
                     <img src="http://openweathermap.org/img/wn/${weatherIcon}.png" alt="Weather Icon">
                     `;
+                     // Add city to search history
+                addToSearchHistory(city);
+                updateSearchHistoryUI();
+
                 })
                 .catch(error => {
             console.error("Error fetching current weather data:", error);
@@ -76,6 +80,28 @@ document.getElementById("weatherForm").addEventListener("submit", function(event
 });
 
         // TODO: add city to search history
-       
+        // Check if city already exists in search history
+function addToSearchHistory(city) {
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city);
+    }
+}
+// Function to update search history UI
+function updateSearchHistoryUI() {
+    const searchHistoryDiv = document.getElementById("searchHistory");
+    searchHistoryDiv.innerHTML = ""; // Clear previous search history
+    
+    // Create buttons for each city in search history
+    searchHistory.forEach(city => {
+        const button = document.createElement("button");
+        button.textContent = city;
+        button.addEventListener("click", function() {
+            // Trigger search for the selected city
+            document.getElementById("cityInput").value = city;
+            document.getElementById("weatherForm").dispatchEvent(new Event("submit"));
+        });
+        searchHistoryDiv.appendChild(button);
+    });
+}
         //ToDo: evenlisteners for search history button: when buttons are clicked they act like search bar
  
