@@ -7,15 +7,17 @@
 ```
 When you open the page you are presented with a "weather dashboard" Header.
 
-On the left side of the page is a searchbox for city input. 
+On the left side of the page is a search box for city input. 
 
-After you click search on the city you'd like to receive the weather for, you are presented with the weather for the day, and a 5 day forecast. 
+When you enter a city and click search, you are presented with the weather for the day and a 5-day forecast. 
 
-Both the weather current weather and the five day forecast display the date including day of the week, temparature, humidity, wind speed and an icon representing the weather condition. 
+The current day's weather and the five-day forecast display the date with the day of the week, temperature, humidity, wind speed, and an icon representing the weather condition. 
 
-The present weather also includes the city name that you searched for. 
+The current day's weather also includes the city name you searched for. 
 
-The city you search for is also saved in your search history where youre able to click on it and are presented with current weather aswell as the 5 day forecast.   
+The city you search for saves in your search history in the form of a button.
+
+When you click on it, you'll receive the current weather and the 5-day forecast.   
 
 If you search for an unknown city you are presented with a message to try again. 
 
@@ -23,13 +25,13 @@ If you search for an unknown city you are presented with a message to try again.
 
 ## Links/Screenshots
 
-The following is a link to deployed application and link to my github Repo, and a screenshot of application. 
+The following is a link to the deployed application and my GitHub Repo, as well as a screenshot of the application. 
 
 Repo Link: (https://github.com/daisyosebe/my_weather_app.git)
 
-Git Hub Page Deployment: ( https://daisyosebe.github.io/my_weather_app/)
+Page Deployment: ( https://daisyosebe.github.io/my_weather_app/)
 
-![Screenshot 2024-05-03 121329](https://github.com/daisyosebe/my_blog/assets/145105156/1ff9f77d-a848-44b2-a615-5086e62c62a0)
+<img width="959" alt="Screenshot " src="https://github.com/daisyosebe/my_weather_app/assets/145105156/9f4e0374-15c0-4595-a0e4-6ed4c165acad">
 
 
 ## Resources
