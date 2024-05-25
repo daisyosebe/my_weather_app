@@ -78,7 +78,7 @@ document.getElementById("weatherForm").addEventListener("submit", function(event
 
 // TODO: add city to search history
 // Check if city already exists in search history
-//Save to local storage
+// Save to local storage
 
 function addToSearchHistory(city) {
     // Check if city already exists in search history
@@ -90,7 +90,7 @@ function addToSearchHistory(city) {
 // Function to update search history
 function updateSearchHistoryUI() {
     const searchHistoryDiv = document.getElementById("searchHistory");
-    searchHistoryDiv.innerHTML = ""; //crears prev search history so whole list doesnt save twice
+    searchHistoryDiv.innerHTML = ""; //clears prev search history so whole list doesnt save twice
     
     // BUTTONS
     searchHistory.forEach(city => {
@@ -106,5 +106,5 @@ function updateSearchHistoryUI() {
 document.addEventListener("DOMContentLoaded", function() {
     updateSearchHistoryUI();
 });
-//ToDo: evenlisteners for search history button: when buttons are clicked they act like search bar
+//TODO: eventlisteners for search history button: when buttons are clicked they act like search bar
  
