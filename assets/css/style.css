@@ -4,11 +4,13 @@ header{
     text-align: center;
     padding: 10px;
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -19,10 +21,12 @@ body {
     flex: 1;
     margin-right: 20px;
 }
+
 .search-container {
     background-color: #f0f0f0;
     padding: 20px;
     margin-bottom: 20px;
+   
 }
 
 .search-container h2 {
@@ -34,6 +38,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .search-container button {
     padding: 5px 0; 
     width: 100%;
@@ -45,16 +50,11 @@ body {
     margin-left: 10px;
  
 }
+
 .search-container button:hover {
     background-color: #0056b3;
 }
-#city input{
-    flex: 1; 
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    
-}
+
 #searchHistory {
     margin-top: auto;
     display: flex;
@@ -62,9 +62,14 @@ body {
 }
 
 #searchHistory button {
-    display: block;
     margin-bottom: 5px;
+    background-color: #acacac;
+    padding:5px;
+    border-radius: 7px;
+   font-weight: 700;
+    
 }
+
 .right-container {
     flex: 2;
 }
@@ -73,13 +78,19 @@ body {
     background-color: #f0f0f0;
     padding: 20px;
     margin-bottom: 20px;
+    font-weight: 600;
 }
+
 h2{
     font-weight: bold;
 }
+
 .forecast-item {
     display: inline-block;
     width: 20%;
     padding: 10px;
     box-sizing: border-box;
+    background-color: rgb(142, 140, 140);
+    color: #f0f0f0;
+    font-weight: 700;
 }

@@ -1,5 +1,5 @@
-// Array to store search history
-let searchHistory = [];
+// Search history is stored
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
 document.getElementById("weatherForm").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -16,32 +16,31 @@ document.getElementById("weatherForm").addEventListener("submit", function(event
             const temp = data.main.temp;
             const windSpeed = data.wind.speed;
             const humidity = data.main.humidity;
-                const city = data.name;
-                const weatherIcon = data.weather[0].icon; 
+            const city = data.name;
+            const weatherIcon = data.weather[0].icon; 
                 
-                const currentDate = new Date();
-                const formattedDate = currentDate.toDateString();
+            const currentDate = new Date();
+            const formattedDate = currentDate.toDateString();
                 
                 
-                document.getElementById("cityAndDate").innerHTML = `${city} - <b>${formattedDate}</b>`;
-                document.getElementById("weatherInfo").innerHTML = `
-                <p>Temp: ${temp} °F</p>
-                    <p>Wind: ${windSpeed} mph</p>
-                    <p>Humidity: ${humidity} %</p>
-                    <img src="http://openweathermap.org/img/wn/${weatherIcon}.png" alt="Weather Icon">
-                    `;
-                     // Add city to search history
+            document.getElementById("cityAndDate").innerHTML = `${city} - <b>${formattedDate}</b>`;
+            document.getElementById("weatherInfo").innerHTML = `<p>Temp: ${temp} °F</p><p>Wind: ${windSpeed} mph</p><p>Humidity: ${humidity} %</p>
+                <img src="http://openweathermap.org/img/wn/${weatherIcon}.png" alt="Weather Icon">`;
+                 // Adds city to search history
                 addToSearchHistory(city);
+                // Updates search history UI
                 updateSearchHistoryUI();
+                // Clears input field after search
+                document.getElementById("cityInput").value = '';
 
                 })
-                .catch(error => {
-            console.error("Error fetching current weather data:", error);
-            //Error: show message to user
-            document.getElementById("weatherInfo").innerHTML = "City not found. Please try again.";
+            .catch(error => {
+                console.error("Error fetching current weather data:", error);
+                //Error: if citys not found
+                document.getElementById("weatherInfo").innerHTML = "City not found. Please try again.";
         });
         
-        // Fetch 5-day forecast data
+        // TODO: Fetch 5-day forecast data
         const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
         
         fetch(forecastApiUrl)
@@ -62,46 +61,50 @@ document.getElementById("weatherForm").addEventListener("submit", function(event
                 const forecastItem = document.createElement("div");
                 forecastItem.classList.add("forecast-item");
                 forecastItem.innerHTML = `
-                    <p>Date: ${forecastDate}</p>
+                    <p>${forecastDate}</p>
                     <img src="http://openweathermap.org/img/wn/${forecastIcon}.png" alt="Weather Icon">
                     <p>Temp: ${forecastTemp} °F</p>
                     <p>Wind: ${forecastWindSpeed} mph</p>
-                    <p>Humidity: ${forecastHumidity} %</p>
-                `;
-                
+                    <p>Humidity: ${forecastHumidity} %</p> `;
                 forecastDiv.appendChild(forecastItem);
             }
         })
         .catch(error => {
             console.error("Error fetching forecast data:", error);
-            // Handle error: show message to user
-            document.getElementById("forecast").innerHTML = "whoops, couldnt find city :( please try again).";
+            // Error: show up in 5 day forecast
+            document.getElementById("forecast").innerHTML = "whoops:(";
         });
 });
 
-        // TODO: add city to search history
-        // Check if city already exists in search history
+// TODO: add city to search history
+// Check if city already exists in search history
+//Save to local storage
+
 function addToSearchHistory(city) {
+    // Check if city already exists in search history
     if (!searchHistory.includes(city)) {
         searchHistory.push(city);
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory)); 
     }
 }
-// Function to update search history UI
+// Function to update search history
 function updateSearchHistoryUI() {
     const searchHistoryDiv = document.getElementById("searchHistory");
-    searchHistoryDiv.innerHTML = ""; // Clear previous search history
+    searchHistoryDiv.innerHTML = ""; //crears prev search history so whole list doesnt save twice
     
-    // Create buttons for each city in search history
+    // BUTTONS
     searchHistory.forEach(city => {
         const button = document.createElement("button");
         button.textContent = city;
         button.addEventListener("click", function() {
-            // Trigger search for the selected city
             document.getElementById("cityInput").value = city;
             document.getElementById("weatherForm").dispatchEvent(new Event("submit"));
         });
         searchHistoryDiv.appendChild(button);
     });
 }
-        //ToDo: evenlisteners for search history button: when buttons are clicked they act like search bar
+document.addEventListener("DOMContentLoaded", function() {
+    updateSearchHistoryUI();
+});
+//ToDo: evenlisteners for search history button: when buttons are clicked they act like search bar
  
